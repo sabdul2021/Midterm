@@ -1,34 +1,107 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>MIDTERM 2019</title>
+  <style>
+    .button {
+      position: relative;
+      background-color: #4CAF50;
+      border: none;
+      font-size: 12px;
+      color: #FFFFFF;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      /* Safari */
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
 
-<html>
-  <head>
-      <title>MIDTERM 2019</title>
-  </head>
-  <body>
-    <center>
+    .button:after {
+      content: "";
+      background: #f1f1f1;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+
+    .button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <input type="text" id="tb" name="tb" />
+    <input type="button" value="Random Number!" class="button" onclick="Random();" />
+    <input type="text" id="tc" name="tc" />
+    <input type="button" value="Extracting hours!" class="button" onclick="getHours();" />
+  </center>
+  <center>
     <script type="text/javascript">
       var question = "What is your name?";
       var answer = prompt(question);
+      var rnd = Math.floor(Math.random() * 100) + 1;
+      //Rounding
+      function Random() {
+        var rnd = Math.floor(Math.random() * 100);
+        console.log(Math.random() * 100);
+        document.getElementById('tb').value = rnd;
+      }
+      //getHours
+      function getHours() {
+        var d = new Date();
+        var currentHrs = d.getHours();
+        console.log(currentHrs);
+        document.getElementById('tc').value = currentHrs;
+      }
+      var d = new Date();
+      var month = '' + (d.getMonth() + 1);
+      var day = '' + d.getDate();
+      var year = d.getFullYear();
+      var today = [year, month, day].join('-');
 
-      var parent = new Date();
-      var currentHours = parent.getHours()
-
-
-      if (currentHours < 18) {
+      if (day < 18) {
         document.write("Good day," + " " + answer);
-
       } else {
         document.write("Good evening," + " " + answer);
       }
-
       document.write("<br>");
+      document.write("Today's date is " + today);
+      document.write("<br>");
+      //group 3
+      document.write("</br>")
+      document.write("Your lucky number today is " + rnd + ".");
 
-      document.write("Today's date is " + parent);
-
-
-
-
+      //group 1
+      var city = "BROOKLYN";
+      copy = city.toLowerCase();
+      document.write("Your new favorite city is " + copy);
+      document.write("<br>");
+      document.write("<br>");
+      var text = (
+        "Neither Apple nor Google have been as aggressive in acquiring smart home products.And when a company like Amazon has dibs on more products in your house, that means rival ones can't be easily used. Once you're all in on Alexa, is there room for a Google Home Hub video speaker, which operates on the Google Assistant? Because you can't use both interchangeably. A perfect example is Sonos One, the connected speaker that currently takes Alexa commands. Later this year, Sonos will update the product to accept Google commands as well – but not at the same time. The user will have to assign one or the other as the personal assistant of their choice. Amazon famously missed out on smartphones by trying to get into the market too late after Apple and Google. It since built a giant device business with e-readers, tablets, connected speakers, security cameras and now, smart home products."
+        );
+      var firstChar = text.indexOf("smart home products");
+      document.write("The word search for smart home products is on line #" + firstChar);
     </script>
   </center>
 
 </body>
+
 </html>
